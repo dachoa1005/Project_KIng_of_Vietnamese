@@ -17,7 +17,7 @@ int main(int argc, const char **argv)
     // specify an address for the socket
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
-    server_address.sin_port = htons(5000);
+    server_address.sin_port = htons(5001);
     server_address.sin_addr.s_addr = INADDR_ANY;
 
     int connection_status = connect(network_socket, (struct sockaddr *)&server_address, sizeof(server_address));
@@ -44,9 +44,10 @@ int main(int argc, const char **argv)
 
             printf("Enter user id:\n");
             fgets(userid, 20, stdin);
+            userid[strlen(userid) - 1] = '\0';
+            
             printf("Enter pssword:\n");
             fgets(password, 20, stdin);
-            userid[strlen(userid) - 1] = '\0';
             password[strlen(password) - 1] = '\0';
 
             strcat(send_message, userid);
