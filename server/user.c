@@ -61,10 +61,13 @@ void readUsersFromFile(User **users, char *filename)
 	{
 		char *token = strtok(line, "|");
 		strcpy(username, token);
+		printf("%s ", token);
 		token = strtok(NULL, "|");
 		strcpy(password, token);
+		printf("%s ", token);
 		token = strtok(NULL, "|");
 		status = atoi(token);
+		printf("%d \n", status);
 		User *user = initUser(username, password, status);
 		bzero(username, 20);
 		bzero(password, 20);
